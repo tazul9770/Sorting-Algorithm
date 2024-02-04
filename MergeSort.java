@@ -2,21 +2,6 @@ import java.util.Scanner;
 
 public class MergeSort {
 	
-	public static void main(String[] args) {
-		
-		Scanner input = new Scanner(System.in);
-		
-        int ara[] = {34, 9, 32, 7};
-		
-		int n = ara.length;
-		
-		divide(ara, 0, n-1);
-		
-		for(int x : ara) {
-			
-			System.out.print(x +" ");
-		}
-	}
 	public static void conquer(int[] ara, int si, int mid, int ei) {
 		
 		int[] merged = new int[ei - si+1];
@@ -48,7 +33,7 @@ public class MergeSort {
 			indx1++;
 		}
 		
-		while(indx2 <= ei){
+		while(indx2 <= ei) {
 			
 			merged[x] = ara[indx2];
 			x++;
@@ -60,6 +45,7 @@ public class MergeSort {
 			ara[j] = merged[i];
 		}
 	}
+	
 	public static void divide(int[] ara, int si, int ei) {
 		
 		if(si >= ei) {
@@ -67,11 +53,28 @@ public class MergeSort {
 			return;
 		}
 		
-		int mid = si+(ei-si) / 2;
+		int mid = si + (ei-si) / 2;
 		
 		divide(ara, si, mid);
 		divide(ara, mid+1, ei);
 		
 		conquer(ara, si, mid, ei);
 	}
+	
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		
+        int[] ara = {3, 9, 7, 6};
+		
+		int n = ara.length;
+		
+		divide(ara, 0, n-1);
+		
+		for(int x : ara) {
+			
+			System.out.print(x +" ");
+		}
+	}
+	
 }
